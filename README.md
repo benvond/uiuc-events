@@ -1,5 +1,4 @@
 # UIUC Events
-### Visit a working version [here](http://35.229.49.127/)
 UIUC Events is a hub for all sorts events happening within the Urbana-Champaign area. 
 Built with Flask and the [MeTA toolkit](https://meta-toolkit.org/), this app uses an Okampi BM25 ranking function 
 and latent Dirichlet allocation (LDA) generative model to categorize and search through a wide collection of events.
