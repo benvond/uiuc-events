@@ -1,0 +1,7 @@
+#file: line.toml
+type = "line-corpus"
+metadata = [{name = "title", type = "string"},
+			{name = "date", type = "string"},
+	    {name = "overview", type = "string"},
+	    {name = "keywords", type = "string"},
+	    {name = "link", type = "string"}]

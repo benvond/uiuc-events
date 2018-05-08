@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <div class="my-3 p-3 bg-white rounded box-shadow"></div>
+  <h3 class="border-bottom border-gray pb-2 mb-0" align="center">
+    {{ "Results for '%s':" % query }}
+  </h3>
+
+  {% if results.__len__() == 0 %}
+    <br><em>No results found :(</em>
+  {% else %}
+    {% for result in results %}
+      <div class="media-body pb-3 mb-0 medium lh-125 border-bottom border-gray">
+        <div class="container">
+          <div class="row">
+            <div class="col-10">
+              <a href={{ '/event/%d' % result.d_id }} text-align="left" class="media text pt-3">
+                <strong class="d-block text-gray-dark">
+                  {{ result.title }}
+                </strong>
+              </a>
+              {% if result.overview != 'None' %}
+                <p>{{ ' '.join(result.overview.split(' ')[:20]) + '...'}}</p>
+              {% endif %}
+            </div>
+            <div class="col-2" text-align="right">
+              <p align="right" class="media text pt-3">
+                <strong class="d-block text-gray-dark">
+                  {% if result.date.year == 2999 %}
+                    {{ 'N/A' }}
+                  {% else %}
+                    {{ result.date.strftime('%A, %B %-d, %Y') }}
+                  {% endif %}
+                </strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
+
+{% endblock%}

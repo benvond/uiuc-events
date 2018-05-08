@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <div class="my-3 p-3 bg-white rounded box-shadow">
+    <h1>Upcoming Events</h1>
+    <br>
+    <h3 class="border-bottom border-gray pb-2 mb-0" align="center">
+      {{ '%s to %s' % (events[0].start.strftime('%A, %B %-d'), events[0].end.strftime('%A, %B %-d')) }}
+    </h3>
+    {% set ns = namespace(last_week=('%s to %s' % (events[0].start.strftime('%A, %B %-d'), events[0].end.strftime('%A, %B %-d')))) %}
+    {% for event in events %}
+      {% if '%s to %s' % (event.start.strftime('%A, %B %-d'), event.end.strftime('%A, %B %-d')) != ns.last_week %}
+        {% set ns.last_week = '%s to %s' % (event.start.strftime('%A, %B %-d'), event.end.strftime('%A, %B %-d')) %}
+        <br><br>
+        <h3 class="border-bottom border-gray pb-2 mb-0" align="center">
+          {{ '%s to %s' % (event.start.strftime('%A, %B %-d'), event.end.strftime('%A, %B %-d')) }}
+        </h3>
+      {% endif %}
+      <div class="media-body pb-3 mb-0 medium lh-125 border-bottom border-gray">
+        <div class="container">
+          <div class="row">
+            <div class="col-10">
+              <a href={{ '/event/%-d' % event.d_id }} text-align="left" class="media text pt-3">
+                <strong class="d-block text-gray-dark">{{ event.title }}</strong>
+              </a>
+              {% if event.overview != 'None'%}
+                <p>{{ ' '.join(event.overview.split(' ')[:20]) + '...'}}</p>
+              {% endif %}
+            </div>
+            <div class="col-2" text-align="right">
+              <p align="right" class="media text pt-3">
+                <strong class="d-block text-gray-dark">
+                  {% if event.date.year == 2999 %}
+                    {{ 'N/A' }}
+                  {% else %}
+                    {{ event.date.strftime('%A, %B %-d, %Y') }}
+                  {% endif %}
+                </strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
+    <small class="d-block text-right mt-3">
+      <a href="/">Back to top</a>
+    </small>
+  </div>
+{% endblock %}

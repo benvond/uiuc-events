@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <div class="my-3 p-3 bg-white rounded box-shadow"></div>
+  <h1 class="border-bottom border-gray pb-2 mb-0">About</h1>
+  <br>
+  <p>UIUC Events is a hub for all sorts events happening within the Urbana-Champaign area. Built with Flask and the MeTA toolkit, this app uses a Okampi BM25 ranking function and latent Dirichlet allocation (LDA) generative model to categorize and search through a wide collection of events.</p>
+  <p>Here's where we get the event data from:</p>
+  <h4><a href="https://calendars.illinois.edu/list/7">UIUC General Events</a></h4>
+  <h4><a href="https://www.visitchampaigncounty.org/events">Visit Champaing County</a></h4>
+  <h4><a href="http://canopyclub.com/calendar/">Canopy Club</a></h4>
+  <h4><a href="https://krannertcenter.com/calendar">Krannert Center</a></h4>
+  <h4><a href="https://champaignparks.com/events/">Champaign Parks</a></h4>
+  <h4><a href="https://campustowns.com/events/">CampusTowns</a></h4>
+{% endblock %}
