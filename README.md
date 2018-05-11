@@ -7,7 +7,7 @@ is a Flask server that solves this problem by gathering event data from a variet
 
 ### How it's implemented
 When the server is first run, the app scrapes event data from a wide selection of sources and 
-assembles the necessary MeTA data files. The data is parsed from either downloadable calendar files (.ics) using the Python library icalendar, or through scraping the pages actual HTML using the Python library BeautifulSoup. It then creates forward and inverted indexes in order to allow searching with an Okampi BM25 ranking function, as well as running a latent Dirichlet allocation (LDA) generative model to group events into topics, regardless of their source. The app then generates HTML pages using this data. Users can browse upcoming events, search for a specific event, and see similar events to ones that they've found.
+assembles the necessary MeTA data files and Event objects. The data is parsed from either downloadable calendar files (.ics) using the Python library icalendar, or through scraping the pages actual HTML using the Python library BeautifulSoup. It then creates forward and inverted indexes in order to allow searching with an Okampi BM25 ranking function, as well as running a latent Dirichlet allocation (LDA) generative model to group events into topics, regardless of their source. The app then generates HTML pages using this data. Users can browse upcoming events, search for a specific event, and see similar events to ones that they've found.
 
 Event data is pulled from:
 * [UIUC General Events](https://calendars.illinois.edu/list/7)
